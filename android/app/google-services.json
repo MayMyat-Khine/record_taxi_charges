@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "988520886571",
+    "project_id": "fcmtest-c3731",
+    "storage_bucket": "fcmtest-c3731.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988520886571:android:a0c9720d2cca371272156e",
+        "android_client_info": {
+          "package_name": "com.example.record_taxi_fees"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFgKu0oPuoKrwprIBBQF_SNVPtQ7ygMjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

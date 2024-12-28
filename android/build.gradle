@@ -1,0 +1,34 @@
+buildscript {
+    repositories {
+        google() // Ensure this line is present
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.2.2' // Use your Gradle plugin version
+        classpath 'com.google.gms:google-services:4.4.2' // Add the Google Services plugin
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+// plugins {
+//   id 'com.google.gms.google-services' version '4.4.2' apply false
+
+// }
+
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
