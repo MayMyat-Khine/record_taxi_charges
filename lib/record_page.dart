@@ -38,27 +38,33 @@ class RecordPage extends StatelessWidget {
               return Column(
                 children: [
                   ...records.entries.map((day) {
-                    return Row(
-                      children: [
-                        Text(
-                          "${day.key}",
-                          style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        ...day.value.asMap().entries.map((element) {
-                          int index = element.key;
-                          bool value = element.value;
-                          return Checkbox(
-                              value: value,
-                              onChanged: (v) {
-                                // call update and change data at db
-                                // dialog(context, () {
-                                //   fbs.setRecord(day.key, v!, index);
-                                // });
-                                fbs.setRecord(day.key, v!, index);
-                              });
-                        })
-                      ],
+                    return GestureDetector(
+                      onLongPress: () {
+                        print("delete");
+                        fbs.deleteDate(day.key);
+                      },
+                      child: Row(
+                        children: [
+                          Text(
+                            "${day.key}",
+                            style: const TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          ...day.value.asMap().entries.map((element) {
+                            int index = element.key;
+                            bool value = element.value;
+                            return Checkbox(
+                                value: value,
+                                onChanged: (v) {
+                                  // call update and change data at db
+                                  // dialog(context, () {
+                                  //   fbs.setRecord(day.key, v!, index);
+                                  // });
+                                  fbs.setRecord(day.key, v!, index);
+                                });
+                          })
+                        ],
+                      ),
                     );
                   })
                 ],

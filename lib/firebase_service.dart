@@ -16,7 +16,16 @@ class FirebaseService {
   ValueNotifier<Map<String, List>> records =
       ValueNotifier<Map<String, List>>({});
 
+  Future<void> deleteDate(String date) async {
+    await db.collection(collectionName).doc(subCollectionName).update({
+      date: FieldValue.delete(),
+    }).then((_) {
+      getDate();
+    });
+  }
+
   Future<void> getDate() async {
+    records.value.clear();
     await db
         .collection(collectionName)
         .doc(subCollectionName)
